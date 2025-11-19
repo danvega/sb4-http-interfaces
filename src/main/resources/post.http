@@ -1,0 +1,31 @@
+### Get all posts
+GET http://localhost:8080/api/posts
+Accept: application/json
+
+### Get post by ID
+GET http://localhost:8080/api/posts/1
+Accept: application/json
+
+### Create a new post
+POST http://localhost:8080/api/posts
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "title": "My New Post",
+  "body": "This is the content of my new post."
+}
+
+### Update an existing post
+PUT http://localhost:8080/api/posts/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "userId": 1,
+  "title": "Updated Post Title",
+  "body": "This is the updated content of the post."
+}
+
+### Delete a post
+DELETE http://localhost:8080/api/posts/1

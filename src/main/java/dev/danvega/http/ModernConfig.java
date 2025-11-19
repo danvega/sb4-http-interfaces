@@ -1,0 +1,23 @@
+package dev.danvega.http;
+
+import dev.danvega.http.post.PostService;
+import dev.danvega.http.todo.TodoService;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.support.RestClientHttpServiceGroupConfigurer;
+import org.springframework.web.service.registry.ImportHttpServices;
+
+@Configuration
+@ImportHttpServices(types = {TodoService.class, PostService.class})
+public class ModernConfig {
+
+
+    @Bean
+    RestClientHttpServiceGroupConfigurer groupConfigurer() {
+        return groups -> {
+            groups.forEachClient((group,builder) -> builder
+                    .baseUrl("https://jsonplaceholder.typicode.com/")
+                    .build());
+        };
+    }
+}
